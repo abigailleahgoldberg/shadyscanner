@@ -17,10 +17,10 @@
   <link rel="canonical" href="https://shadyscanner.com" />
   <style>
     :root {
-      --dark: #07090F;
-      --red: #DC2626;
-      --teal: #00C896;
-      --cream: #F8FAFC;
+      --dark: #0A1628;
+      --yellow: #F5C518;
+      --blue: #1D4ED8;
+      --cream: #F0F6FF;
     }
 
     *, *::before, *::after {
@@ -68,7 +68,7 @@
     .nav-logo-icon {
       width: 32px;
       height: 32px;
-      background: var(--teal);
+      background: var(--blue);
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -78,7 +78,7 @@
     }
 
     .nav-logo span.logo-shady { color: var(--cream); }
-    .nav-logo span.logo-scanner { color: var(--teal); }
+    .nav-logo span.logo-scanner { color: var(--blue); }
 
     .nav-links {
       display: flex;
@@ -99,7 +99,7 @@
     }
 
     .nav-cta {
-      background: var(--teal);
+      background: var(--blue);
       color: var(--dark) !important;
       font-weight: 700 !important;
       padding: 0.5rem 1.25rem;
@@ -136,7 +136,7 @@
       gap: 0.5rem;
       background: rgba(0, 200, 150, 0.1);
       border: 1px solid rgba(0, 200, 150, 0.3);
-      color: var(--teal);
+      color: var(--blue);
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.06em;
@@ -149,7 +149,7 @@
     .hero-badge-dot {
       width: 6px;
       height: 6px;
-      background: var(--teal);
+      background: var(--blue);
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
@@ -167,7 +167,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .hero h1 .accent-red { color: var(--red); }
+    .hero h1 .accent-red { color: var(--yellow); }
 
     .hero p {
       font-size: 1.1rem;
@@ -184,7 +184,7 @@
     }
 
     .btn-primary {
-      background: var(--teal);
+      background: var(--blue);
       color: var(--dark);
       font-weight: 700;
       font-size: 0.95rem;
@@ -263,12 +263,12 @@
     }
 
     .t-line { display: flex; align-items: flex-start; gap: 0.5rem; }
-    .t-prompt { color: var(--teal); user-select: none; }
+    .t-prompt { color: var(--blue); user-select: none; }
     .t-cmd { color: #e2e8f0; }
     .t-output { color: #64748b; padding-left: 1rem; }
-    .t-ok { color: var(--teal); }
+    .t-ok { color: var(--blue); }
     .t-warn { color: #f59e0b; }
-    .t-crit { color: var(--red); }
+    .t-crit { color: var(--yellow); }
     .t-section {
       color: #475569;
       font-size: 0.72rem;
@@ -283,7 +283,7 @@
       display: inline-block;
       width: 8px;
       height: 14px;
-      background: var(--teal);
+      background: var(--blue);
       animation: blink 1s step-end infinite;
       vertical-align: middle;
       margin-left: 2px;
@@ -365,7 +365,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--teal);
+      color: var(--blue);
       margin-bottom: 0.75rem;
     }
 
@@ -446,7 +446,7 @@
       content: '';
       width: 5px;
       height: 5px;
-      background: var(--teal);
+      background: var(--blue);
       border-radius: 50%;
       flex-shrink: 0;
     }
@@ -478,7 +478,7 @@
     }
 
     .pricing-card.featured {
-      border-color: var(--teal);
+      border-color: var(--blue);
       box-shadow: 0 0 40px rgba(0, 200, 150, 0.1);
     }
 
@@ -487,7 +487,7 @@
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--teal);
+      background: var(--blue);
       color: var(--dark);
       font-size: 0.7rem;
       font-weight: 800;
@@ -508,7 +508,7 @@
     }
 
     .pricing-card.featured .pricing-tier {
-      color: var(--teal);
+      color: var(--blue);
     }
 
     .pricing-price {
@@ -556,7 +556,7 @@
     }
 
     .pricing-check {
-      color: var(--teal);
+      color: var(--blue);
       font-size: 0.8rem;
       flex-shrink: 0;
     }
@@ -580,7 +580,7 @@
       margin-bottom: 1rem;
     }
 
-    .signup h2 span { color: var(--teal); }
+    .signup h2 span { color: var(--blue); }
 
     .signup p {
       color: #94a3b8;
@@ -612,11 +612,11 @@
     }
 
     .signup-form input[type="email"]:focus {
-      border-color: var(--teal);
+      border-color: var(--blue);
     }
 
     .signup-form button {
-      background: var(--teal);
+      background: var(--blue);
       color: var(--dark);
       font-weight: 700;
       font-size: 0.95rem;
@@ -653,7 +653,7 @@
     .footer-brand {
       font-weight: 700;
       font-size: 0.9rem;
-      color: var(--teal);
+      color: var(--blue);
     }
 
     .footer-copy {
@@ -760,7 +760,7 @@
         </div>
         <div class="scan-stats">
           <div class="stat-item">
-            <div class="stat-value" style="color: var(--red);">2</div>
+            <div class="stat-value" style="color: var(--yellow);">2</div>
             <div class="stat-label">Critical</div>
           </div>
           <div class="stat-item">
@@ -768,7 +768,7 @@
             <div class="stat-label">Warnings</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value" style="color: var(--teal);">41</div>
+            <div class="stat-value" style="color: var(--blue);">41</div>
             <div class="stat-label">Passed</div>
           </div>
         </div>
