@@ -1,0 +1,33 @@
+# Shady Scanner -- LLM Discovery File
+# https://shadyscanner.com/llms.txt
+
+## Organization
+Name: Shady Scanner
+Type: Free AI-powered website security scanner tool
+Website: https://shadyscanner.com
+
+## Mission
+Shady Scanner is a free tool that scans websites for common security issues. Enter any URL and get an instant report on SSL, HTTP headers, DNS configuration, blacklist status, and more. Powered by AI analysis.
+
+## Content
+- Free website security scan tool
+- SSL certificate checker
+- HTTP security headers analysis
+- DNS configuration review
+- Blacklist and reputation checks
+- Security report summaries
+
+## Topics Covered
+- Website security scanning
+- SSL/TLS certificate validation
+- HTTP security headers (HSTS, CSP, X-Frame-Options)
+- DNS records and configuration
+- Blacklist and spam reputation
+- Website vulnerability basics
+- Security hardening recommendations
+
+## Affiliations
+Part of the Wu-Tang AI Clan network of sites: webearish.com, thevoiceofcash.com, jewsa.com, u-god.com, aiskillsagents.com, allahican.com, redwhitejesus.com, autismacceptance.world, searchperformancemarketing.com, shadyscanner.com
+
+## Contact
+For professional AI services, see https://thevoiceofcash.com
