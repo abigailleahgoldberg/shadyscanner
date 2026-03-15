@@ -41,7 +41,7 @@ module.exports = async function handler(req, res) {
         'api-key': brevoKey,
       },
       body: JSON.stringify({
-        sender: { name: SITE_NAME, email: 'noreply@thevoiceofcash.com' },
+        sender: { name: SITE_NAME, email: 'abigailleahgoldberg@gmail.com' },
         to: [{ email: 'thevoiceofcash@gmail.com', name: 'The Voice of Cash' }],
         subject: '[' + SITE_NAME + '] New inquiry from ' + name,
         htmlContent: '<h2>New Contact Form Submission</h2>' +
