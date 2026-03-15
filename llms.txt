@@ -26,8 +26,15 @@ Shady Scanner is a free tool that scans websites for common security issues. Ent
 - Website vulnerability basics
 - Security hardening recommendations
 
+## URLs
+- https://shadyscanner.com/ : Homepage
+- https://shadyscanner.com/blog/ : Security Blog
+- https://shadyscanner.com/blog/top-5-ai-security-threats-2026.html : The Top 5 AI Security Threats Every Business Should Know in 2026
+- https://shadyscanner.com/blog/how-to-audit-your-website-vulnerabilities.html : How to Audit Your Website for Vulnerabilities Without Being a Developer
+- https://shadyscanner.com/blog/ssl-certificates-explained-why-your-site-needs-https.html : SSL Certificates Explained: Why Your Site Needs HTTPS and How to Check
+
 ## Affiliations
-Part of the Wu-Tang AI Clan network of sites: webearish.com, thevoiceofcash.com, jewsa.com, u-god.com, aiskillsagents.com, allahican.com, redwhitejesus.com, autismacceptance.world, searchperformancemarketing.com, shadyscanner.com
+Part of The Voice of Cash network of sites: webearish.com, thevoiceofcash.com, jewsa.com, u-god.com, aiskillsagents.com, allahican.com, redwhitejesus.com, autismacceptance.world, searchperformancemarketing.com, shadyscanner.com
 
 ## Contact
 For professional AI services, see https://thevoiceofcash.com

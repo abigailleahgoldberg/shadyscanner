@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Audit Your Website for Vulnerabilities Without Being a Developer -- Shady Scanner</title>
+  <meta name="description" content="You do not need to be a security professional to find the most common vulnerabilities on your website. Here is a practical audit process any business owner can run." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="How to Audit Your Website for Vulnerabilities Without Being a Developer" />
+  <meta property="og:description" content="You do not need to be a security professional to find the most common vulnerabilities on your website. Here is a practical audit process any business owner can run." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://shadyscanner.com/blog/how-to-audit-your-website-vulnerabilities.html" />
+  <link rel="canonical" href="https://shadyscanner.com/blog/how-to-audit-your-website-vulnerabilities.html" />
+  <style>
+    :root { --dark: #0A1628; --yellow: #F5C518; --blue: #1D4ED8; --cream: #F0F6FF; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--dark); color: var(--cream); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+    a { color: #93c5fd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; background-color: rgba(7, 9, 15, 0.95); backdrop-filter: blur(12px); z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; color: var(--cream); }
+    .nav-logo-icon { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--dark); }
+    .nav-logo span.logo-scanner { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: #94a3b8; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta { background: var(--blue); color: var(--dark) !important; font-weight: 700 !important; padding: 0.5rem 1.25rem; border-radius: 6px; }
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 3rem 2.5rem 5rem; }
+    .article-meta { margin-bottom: 2rem; }
+    .article-category { background: rgba(29, 78, 216, 0.15); color: #93c5fd; font-size: 0.78rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 999px; margin-right: 0.75rem; }
+    .article-date { color: #64748b; font-size: 0.85rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .article-excerpt { font-size: 1.15rem; color: #94a3b8; margin-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 2rem; }
+    h2 { font-size: 1.4rem; font-weight: 700; margin: 2.5rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 0.75rem; color: #93c5fd; }
+    p { margin-bottom: 1.25rem; color: #cbd5e1; }
+    ul, ol { margin: 1rem 0 1.25rem 1.5rem; color: #cbd5e1; }
+    li { margin-bottom: 0.5rem; }
+    code { background: rgba(255,255,255,0.08); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #93c5fd; }
+    .cta-box { background: rgba(29, 78, 216, 0.1); border: 1px solid rgba(29, 78, 216, 0.3); border-radius: 12px; padding: 2rem; margin: 3rem 0; text-align: center; }
+    .cta-box h3 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--cream); }
+    .cta-box p { margin-bottom: 1.25rem; }
+    .cta-btn { display: inline-block; background: var(--blue); color: var(--dark); font-weight: 700; padding: 0.75rem 2rem; border-radius: 8px; }
+    .back-link { display: inline-block; color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; }
+    .back-link:hover { color: var(--cream); }
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-brand { font-weight: 800; font-size: 1.1rem; }
+    .footer-copy { color: #64748b; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://shadyscanner.com" class="nav-logo">
+      <div class="nav-logo-icon">S</div>
+      <span class="logo-shady">Shady</span><span class="logo-scanner">Scanner</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://shadyscanner.com/#features">Features</a></li>
+      <li><a href="https://shadyscanner.com/#pricing">Pricing</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="https://shadyscanner.com/#early-access" class="nav-cta">Get Early Access</a></li>
+    </ul>
+  </nav>
+
+  <article class="article-wrap">
+    <a href="/blog/" class="back-link">&larr; Back to Blog</a>
+
+    <div class="article-meta">
+      <span class="article-category">Website Security</span>
+      <time class="article-date" datetime="2026-02-12">February 12, 2026</time>
+    </div>
+
+    <h1>How to Audit Your Website for Vulnerabilities Without Being a Developer</h1>
+
+    <p class="article-excerpt">You do not need to be a security professional to find the most common vulnerabilities on your website. Here is a practical audit process any business owner can run in under an hour.</p>
+
+    <p>Most small business websites have security vulnerabilities. The majority of those vulnerabilities are not sophisticated, zero-day exploits. They are basic, well-known issues that exist because nobody looked for them. Missing HTTPS. Outdated plugins. Weak security headers. Exposed admin panels. These are the issues that attackers scan for at scale every day.</p>
+
+    <p>The good news is that finding most of these issues does not require security expertise. It requires running the right tools and knowing what to look for. Here is a practical audit framework any business owner can work through.</p>
+
+    <h2>Step 1: Verify Your HTTPS Configuration</h2>
+
+    <p>Start with the most basic check. Open your website in a browser. Look at the address bar. Does the URL start with <code>https://</code>? Is there a padlock icon? If the answer to either question is no, your site is transmitting data unencrypted. Any information visitors submit -- contact forms, login credentials, payment information -- is visible to anyone monitoring the network connection.</p>
+
+    <p>If you see a padlock but with a warning indicator, click it to see the specific issue. Common HTTPS problems include: an expired SSL certificate, a certificate issued for a different domain name, or mixed content (a page loaded over HTTPS that includes some resources -- images, scripts -- loaded over HTTP).</p>
+
+    <p>Mixed content is particularly common and easy to miss. A page that shows a padlock can still have mixed content warnings that degrade security and may trigger browser warnings for some visitors. Run your site through an SSL checking tool to identify mixed content issues across all pages.</p>
+
+    <h2>Step 2: Check Your Security Headers</h2>
+
+    <p>HTTP security headers are instructions your web server sends to browsers that define how the browser should handle your content. They are a significant security layer that many websites neglect entirely.</p>
+
+    <p>The six security headers every business website should have:</p>
+
+    <ul>
+      <li><strong>Content-Security-Policy (CSP):</strong> Defines which sources of content (scripts, images, fonts) the browser is permitted to load. Prevents cross-site scripting attacks by restricting what code can execute on your pages.</li>
+      <li><strong>X-Frame-Options:</strong> Prevents your site from being embedded in an iframe on another site. This blocks clickjacking attacks where a malicious site overlays your interface to trick users into clicking things they do not intend to.</li>
+      <li><strong>Strict-Transport-Security (HSTS):</strong> Tells browsers to always connect to your site over HTTPS, even if the user types just the domain without HTTPS. Prevents downgrade attacks.</li>
+      <li><strong>X-Content-Type-Options:</strong> Prevents browsers from guessing the content type of a response and executing files in unexpected ways.</li>
+      <li><strong>Referrer-Policy:</strong> Controls how much referrer information is included with requests, preventing leakage of sensitive URL parameters to third parties.</li>
+      <li><strong>Permissions-Policy:</strong> Controls which browser features (camera, microphone, geolocation) your site can access or request.</li>
+    </ul>
+
+    <p>To check your current security headers, visit <a href="https://securityheaders.com" target="_blank" rel="noopener">securityheaders.com</a> and enter your domain. The tool will scan your headers and provide a grade along with specific recommendations.</p>
+
+    <h2>Step 3: Run a Vulnerability Scan</h2>
+
+    <p>Automated scanning tools check your site for known vulnerabilities -- outdated software versions, exposed configuration files, predictable admin login paths, and hundreds of other common issues.</p>
+
+    <p>For WordPress sites specifically, a plugin called WPScan can identify vulnerable plugins, themes, and WordPress core versions. Keeping WordPress core and all plugins updated is the single most effective security practice for WordPress sites, and scanning reveals exactly what needs updating.</p>
+
+    <p>For any site, Shady Scanner checks multiple security dimensions simultaneously and summarizes the results without requiring technical expertise to interpret them. Enter your URL and get a structured report on SSL, headers, DNS, and common vulnerability indicators.</p>
+
+    <h2>Step 4: Check Your DNS Configuration</h2>
+
+    <p>DNS records are not just routing instructions. Several DNS record types are directly relevant to email security and prevent attackers from sending email that appears to come from your domain.</p>
+
+    <h3>SPF (Sender Policy Framework)</h3>
+    <p>An SPF record tells email recipients which mail servers are authorized to send email from your domain. Without an SPF record, anyone can send email that appears to originate from your domain. This is how attackers impersonate companies in phishing attacks.</p>
+
+    <h3>DKIM (DomainKeys Identified Mail)</h3>
+    <p>DKIM adds a cryptographic signature to emails from your domain that recipients can verify. It confirms that an email actually came from your servers and has not been modified in transit.</p>
+
+    <h3>DMARC</h3>
+    <p>DMARC builds on SPF and DKIM to specify what should happen to email that fails authentication -- reject it, quarantine it, or deliver it with a report. Without a DMARC policy, even having SPF and DKIM configured does not prevent email spoofing effectively.</p>
+
+    <p>Check your current DNS records at <a href="https://mxtoolbox.com" target="_blank" rel="noopener">mxtoolbox.com</a>. Enter your domain and run the Email Security Grader to see if SPF, DKIM, and DMARC are configured correctly.</p>
+
+    <h2>Step 5: Look for Exposed Sensitive Files and Paths</h2>
+
+    <p>Many websites inadvertently expose files that should not be publicly accessible. Common examples include configuration files, database backups, error logs, and administrative interfaces.</p>
+
+    <p>Manually check several paths on your domain by appending them to your URL and seeing what loads:</p>
+
+    <ul>
+      <li><code>/wp-admin</code> or <code>/admin</code> -- administrative login pages</li>
+      <li><code>/phpinfo.php</code> -- PHP configuration information that reveals server details</li>
+      <li><code>/.env</code> -- environment configuration files that sometimes contain API keys and credentials</li>
+      <li><code>/backup</code> or <code>/backups</code> -- backup directories</li>
+      <li><code>/config.php</code> or <code>/configuration.php</code> -- configuration files</li>
+    </ul>
+
+    <p>Administrative login pages being publicly accessible is not itself a vulnerability -- they need to be accessible for legitimate use -- but their existence should prompt you to verify they require strong passwords and ideally multi-factor authentication. Exposed configuration files, environment files, and backup directories are immediate issues that need to be addressed by restricting access or removing the files from public directories.</p>
+
+    <h2>Step 6: Verify Your SSL Certificate Expiration Date</h2>
+
+    <p>SSL certificates expire. When they do, browsers display security warnings to every visitor. For business websites, an expired SSL certificate is both a security issue and a trust-destroying user experience.</p>
+
+    <p>Check your certificate expiration date by clicking the padlock icon in your browser address bar and viewing certificate details. Set a calendar reminder for 30 days before expiration. Better: configure automatic certificate renewal through your hosting provider or certificate authority. Most modern hosting platforms offer Let's Encrypt certificates with automatic renewal. Use it.</p>
+
+    <h2>What to Do With What You Find</h2>
+
+    <p>A vulnerability audit is only valuable if you act on the results. After running through this checklist, you will likely find a mix of issues with different severity levels.</p>
+
+    <p>Prioritize in this order: anything that exposes sensitive data or credentials immediately, missing or misconfigured HTTPS, missing email security records (SPF, DKIM, DMARC), missing security headers, and outdated software.</p>
+
+    <p>Most of these issues are fixable by your hosting provider or web developer in a few hours. The audit is the hard part -- knowing what to fix makes the fixing tractable.</p>
+
+    <div class="cta-box">
+      <h3>Run a free Shady Scanner audit on your site</h3>
+      <p>Get a structured security report covering SSL, headers, DNS, and more. No technical background required.</p>
+      <a href="https://shadyscanner.com/#early-access" class="cta-btn">Get Early Access</a>
+    </div>
+
+    <p>Related reading: <a href="/blog/ssl-certificates-explained-why-your-site-needs-https.html">SSL Certificates Explained</a> and <a href="/blog/top-5-ai-security-threats-2026.html">The Top 5 AI Security Threats in 2026</a>.</p>
+  </article>
+
+  <footer>
+    <div class="footer-brand">ShadyScanner</div>
+    <div class="footer-copy">&copy; 2026 Shady Scanner. All rights reserved.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSL Certificates Explained: Why Your Site Needs HTTPS and How to Check -- Shady Scanner</title>
+  <meta name="description" content="SSL certificates are the baseline of website security. Here is what they are, why they matter, how to check if yours is configured correctly, and what to do if it is not." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="SSL Certificates Explained: Why Your Site Needs HTTPS and How to Check" />
+  <meta property="og:description" content="SSL certificates are the baseline of website security. Here is what they are, why they matter, how to check if yours is configured correctly, and what to do if it is not." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://shadyscanner.com/blog/ssl-certificates-explained-why-your-site-needs-https.html" />
+  <link rel="canonical" href="https://shadyscanner.com/blog/ssl-certificates-explained-why-your-site-needs-https.html" />
+  <style>
+    :root { --dark: #0A1628; --yellow: #F5C518; --blue: #1D4ED8; --cream: #F0F6FF; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--dark); color: var(--cream); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.7; }
+    a { color: #93c5fd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; background-color: rgba(7, 9, 15, 0.95); backdrop-filter: blur(12px); z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; color: var(--cream); }
+    .nav-logo-icon { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--dark); }
+    .nav-logo span.logo-scanner { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: #94a3b8; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta { background: var(--blue); color: var(--dark) !important; font-weight: 700 !important; padding: 0.5rem 1.25rem; border-radius: 6px; }
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 3rem 2.5rem 5rem; }
+    .article-meta { margin-bottom: 2rem; }
+    .article-category { background: rgba(29, 78, 216, 0.15); color: #93c5fd; font-size: 0.78rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 999px; margin-right: 0.75rem; }
+    .article-date { color: #64748b; font-size: 0.85rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .article-excerpt { font-size: 1.15rem; color: #94a3b8; margin-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 2rem; }
+    h2 { font-size: 1.4rem; font-weight: 700; margin: 2.5rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 0.75rem; color: #93c5fd; }
+    p { margin-bottom: 1.25rem; color: #cbd5e1; }
+    ul, ol { margin: 1rem 0 1.25rem 1.5rem; color: #cbd5e1; }
+    li { margin-bottom: 0.5rem; }
+    code { background: rgba(255,255,255,0.08); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #93c5fd; }
+    .info-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; }
+    .info-box p { margin-bottom: 0; }
+    .cta-box { background: rgba(29, 78, 216, 0.1); border: 1px solid rgba(29, 78, 216, 0.3); border-radius: 12px; padding: 2rem; margin: 3rem 0; text-align: center; }
+    .cta-box h3 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--cream); }
+    .cta-box p { margin-bottom: 1.25rem; }
+    .cta-btn { display: inline-block; background: var(--blue); color: var(--dark); font-weight: 700; padding: 0.75rem 2rem; border-radius: 8px; }
+    .back-link { display: inline-block; color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; }
+    .back-link:hover { color: var(--cream); }
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-brand { font-weight: 800; font-size: 1.1rem; }
+    .footer-copy { color: #64748b; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://shadyscanner.com" class="nav-logo">
+      <div class="nav-logo-icon">S</div>
+      <span class="logo-shady">Shady</span><span class="logo-scanner">Scanner</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://shadyscanner.com/#features">Features</a></li>
+      <li><a href="https://shadyscanner.com/#pricing">Pricing</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="https://shadyscanner.com/#early-access" class="nav-cta">Get Early Access</a></li>
+    </ul>
+  </nav>
+
+  <article class="article-wrap">
+    <a href="/blog/" class="back-link">&larr; Back to Blog</a>
+
+    <div class="article-meta">
+      <span class="article-category">SSL &amp; HTTPS</span>
+      <time class="article-date" datetime="2025-11-20">November 20, 2025</time>
+    </div>
+
+    <h1>SSL Certificates Explained: Why Your Site Needs HTTPS and How to Check</h1>
+
+    <p class="article-excerpt">SSL certificates are the baseline of website security. Here is what they are, why they matter for your business, how to check if yours is configured correctly, and what to do if something is wrong.</p>
+
+    <p>If you have ever noticed the padlock icon in a browser address bar, you have seen SSL at work. Most business owners know they need HTTPS without fully understanding what it does, why it matters, or how to verify it is working correctly. This guide explains all three.</p>
+
+    <h2>What an SSL Certificate Actually Is</h2>
+
+    <p>SSL stands for Secure Sockets Layer, though the technology in use today is actually its successor, TLS (Transport Layer Security). The terms are used interchangeably in common usage. An SSL/TLS certificate is a digital document that does two things.</p>
+
+    <p>First, it enables encryption. When a visitor connects to your website over HTTPS, the SSL certificate is used to establish an encrypted connection between the visitor's browser and your web server. Data transmitted over this connection -- form submissions, login credentials, payment information, anything -- is encrypted so that anyone intercepting the network traffic sees only scrambled data they cannot read.</p>
+
+    <p>Second, it provides identity verification. The certificate contains information about who it was issued to (your domain name), who issued it (a certificate authority), and when it expires. When a browser connects to your site, it checks that the certificate is valid, has not expired, was issued by a trusted certificate authority, and matches the domain it was issued for. This verification confirms to visitors that they are actually connected to your site and not a fake site designed to steal information.</p>
+
+    <h2>Why HTTPS Matters for Your Business</h2>
+
+    <h3>Security</h3>
+    <p>The most direct reason: without HTTPS, any data transmitted between your visitors and your server is unencrypted. This is called a man-in-the-middle attack vector. On public Wi-Fi networks in particular, intercepting unencrypted traffic is straightforward for an attacker with basic tools. Contact form submissions, login attempts, and any other form data is readable.</p>
+
+    <h3>Browser Trust Indicators</h3>
+    <p>Chrome, Firefox, and Safari all display prominent warnings when visitors navigate to sites without HTTPS or with invalid SSL certificates. The warnings range from a "Not Secure" indicator in the address bar to full-page blocking warnings for sites with expired or invalid certificates. These warnings cause significant visitor abandonment. A business losing potential customers because of a certificate issue is a concrete, measurable cost.</p>
+
+    <h3>SEO</h3>
+    <p>Google confirmed HTTPS as a ranking signal in 2014 and has steadily increased its weight since. HTTPS is now a baseline requirement for competitive search rankings. Non-HTTPS sites face a ranking penalty relative to equivalent HTTPS sites. This is a compounding cost: poor SSL configuration hurts both direct conversions from browser warnings and organic search traffic.</p>
+
+    <h3>Compliance</h3>
+    <p>If your site handles payment card data, HTTPS is required for PCI DSS compliance. If you operate in the European Union or handle EU resident data, GDPR's data protection requirements effectively mandate encryption in transit. CCPA and similar privacy regulations point in the same direction. HTTPS is not just a security best practice. It is a compliance requirement for most businesses that handle customer data.</p>
+
+    <h2>The Three Types of SSL Certificates</h2>
+
+    <h3>Domain Validated (DV)</h3>
+    <p>The most common type. The certificate authority verifies only that you control the domain. Issuance is typically automated and takes minutes. Let's Encrypt, which is free and widely supported by hosting providers, issues DV certificates. DV certificates are appropriate for most business websites.</p>
+
+    <h3>Organization Validated (OV)</h3>
+    <p>The certificate authority verifies domain ownership plus business identity information (organization name, location). Provides additional trust signals and is appropriate for e-commerce sites and businesses where visitor trust is particularly important.</p>
+
+    <h3>Extended Validation (EV)</h3>
+    <p>The highest level of validation. Extensive organization verification. Previously displayed the organization name in a green bar in the browser address bar -- that visual indicator has been removed in modern browsers, which has reduced EV's practical differentiation. Still provides the strongest identity verification for high-security applications.</p>
+
+    <h2>How to Check Your SSL Configuration</h2>
+
+    <h3>The Quick Browser Check</h3>
+    <p>Open your website in Chrome or Firefox. Look at the address bar. If it shows <code>https://</code> with a padlock, your basic SSL is working. Click the padlock to see certificate details including the issuer, validity dates, and what domain it was issued for. Verify the certificate is issued for your exact domain and has not expired.</p>
+
+    <h3>Full SSL Configuration Audit</h3>
+    <p>The browser check only tells you if basic SSL is working. A full configuration audit checks for additional issues:</p>
+
+    <ul>
+      <li><strong>Certificate chain completeness:</strong> SSL certificates are issued within a chain of trust. If intermediate certificates are missing from your server configuration, some browsers will reject the connection even if your certificate itself is valid.</li>
+      <li><strong>Mixed content:</strong> A page loaded over HTTPS that includes resources (images, scripts, stylesheets) loaded over HTTP has mixed content. This can trigger browser warnings and weakens the security guarantee.</li>
+      <li><strong>Cipher suite strength:</strong> SSL/TLS supports multiple encryption algorithms, some of which are outdated and vulnerable. Your server should be configured to use only current, strong cipher suites and reject connections from clients using outdated protocols like TLS 1.0 or 1.1.</li>
+      <li><strong>HSTS implementation:</strong> HTTP Strict Transport Security tells browsers to always connect to your site over HTTPS. Without HSTS, a user who types just your domain without HTTPS is initially connected over HTTP before being redirected. During that brief window, an attacker can intercept the connection.</li>
+    </ul>
+
+    <p>For a comprehensive audit, run your domain through <a href="https://www.ssllabs.com/ssltest/" target="_blank" rel="noopener">SSL Labs' SSL Server Test</a>. It produces a detailed grade and specific recommendations. An A or A+ grade indicates a correctly configured SSL implementation.</p>
+
+    <div class="info-box">
+      <p><strong>Quick tip:</strong> Shady Scanner runs an SSL check as part of its automated site scan and surfaces the most actionable issues in plain language without requiring you to interpret raw SSL Labs output.</p>
+    </div>
+
+    <h2>What to Do If Something Is Wrong</h2>
+
+    <h3>Expired Certificate</h3>
+    <p>Contact your hosting provider. Most modern hosting platforms support automatic certificate renewal through Let's Encrypt. If your current setup does not have automatic renewal, enable it. Set a calendar reminder for 30 days before expiration as a backup. An expired certificate is an avoidable problem that creates immediate, significant visitor impact.</p>
+
+    <h3>Missing HTTPS or HTTP Site</h3>
+    <p>Your hosting provider can enable SSL for your domain, usually at no additional cost through Let's Encrypt. After enabling SSL, ensure all HTTP traffic is redirected to HTTPS through a server-side redirect (not a JavaScript redirect). This should be a same-day fix in most cases.</p>
+
+    <h3>Mixed Content</h3>
+    <p>Mixed content requires finding and updating every reference to HTTP resources in your site's code and database. For WordPress sites, the plugin "Better Search Replace" can update HTTP references in the database. Your developer can audit template files for hardcoded HTTP references. This is a half-day to full-day project depending on how many references exist.</p>
+
+    <h3>SSL Labs Grade Below A</h3>
+    <p>Grades below A typically indicate outdated protocol support or weak cipher suites in your server configuration. Your hosting provider or server administrator can update the server configuration to address specific issues identified in the SSL Labs report. For managed hosting platforms, this may be a support request rather than a configuration change you make directly.</p>
+
+    <h2>SSL Certificates and the Bigger Security Picture</h2>
+
+    <p>SSL certificates are necessary but not sufficient for website security. HTTPS encrypts data in transit. It does not protect against vulnerable software on your server, weak authentication, misconfigured access controls, or the many other vectors through which websites are compromised.</p>
+
+    <p>Think of SSL as the foundation. A website without HTTPS is immediately vulnerable in a basic, addressable way. A website with HTTPS still needs the rest of its security configuration evaluated. Start with SSL. Then keep going.</p>
+
+    <div class="cta-box">
+      <h3>Check your SSL configuration with Shady Scanner</h3>
+      <p>Get a full SSL check plus security headers, DNS, and more in one scan. Free and instant.</p>
+      <a href="https://shadyscanner.com/#early-access" class="cta-btn">Get Early Access</a>
+    </div>
+
+    <p>Related reading: <a href="/blog/how-to-audit-your-website-vulnerabilities.html">How to Audit Your Website for Vulnerabilities</a> and <a href="/blog/top-5-ai-security-threats-2026.html">The Top 5 AI Security Threats in 2026</a>.</p>
+  </article>
+
+  <footer>
+    <div class="footer-brand">ShadyScanner</div>
+    <div class="footer-copy">&copy; 2026 Shady Scanner. All rights reserved.</div>
+  </footer>
+</body>
+</html>
