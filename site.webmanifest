@@ -1,0 +1,10 @@
+{
+  "name": "Shady Scanner",
+  "short_name": "ShadyScanner",
+  "description": "AI-powered security scanning for websites, APIs, and business tools. Find vulnerabilities before attackers do.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1628",
+  "theme_color": "#1D4ED8",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

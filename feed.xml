@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shady Scanner</title>
+    <link>https://shadyscanner.com</link>
+    <description>AI-powered security scanning for websites, APIs, and business tools. Find vulnerabilities before attackers do.</description>
+    <language>en-us</language>
+    <atom:link href="https://shadyscanner.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Top 5 AI Security Threats in 2026]]></title>
+      <link>https://shadyscanner.com/blog/top-5-ai-security-threats-2026.html</link>
+      <description><![CDATA[The threat landscape has evolved rapidly. Here are the five AI-powered security threats every business needs to know about in 2026.]]></description>
+      <guid>https://shadyscanner.com/blog/top-5-ai-security-threats-2026.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[SSL Certificates Explained: Why Your Site Needs HTTPS]]></title>
+      <link>https://shadyscanner.com/blog/ssl-certificates-explained-why-your-site-needs-https.html</link>
+      <description><![CDATA[SSL certificates are the foundation of web security. Here's what they are, why they matter, and how to make sure yours is configured correctly.]]></description>
+      <guid>https://shadyscanner.com/blog/ssl-certificates-explained-why-your-site-needs-https.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[How to Audit Your Website Vulnerabilities]]></title>
+      <link>https://shadyscanner.com/blog/how-to-audit-your-website-vulnerabilities.html</link>
+      <description><![CDATA[A step-by-step guide to auditing your website for common security vulnerabilities before attackers find them first.]]></description>
+      <guid>https://shadyscanner.com/blog/how-to-audit-your-website-vulnerabilities.html</guid>
+    </item>
+  </channel>
+</rss>
