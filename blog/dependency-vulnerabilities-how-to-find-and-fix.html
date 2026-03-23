@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dependency Vulnerabilities: How to Find and Fix Them Before They Find You -- Shady Scanner</title>
+  <meta name="description" content="Outdated npm packages and dependencies are one of the most common vectors for web security vulnerabilities. Here is how to audit and fix them." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://shadyscanner.com/blog/dependency-vulnerabilities-how-to-find-and-fix.html" />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #222; line-height: 1.7; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin-top: 2rem; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    code { background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+    a { color: #1a73e8; }
+    nav { margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Shady Scanner</a> &rsaquo; <a href="/blog/">Blog</a></nav>
+  <h1>Dependency Vulnerabilities: How to Find and Fix Them Before They Find You</h1>
+  <div class="meta">March 23, 2026 &bull; 7 min read &bull; Security Practices</div>
+
+  <p>Every npm package you install in your project has its own dependencies, and those dependencies have dependencies. By the time you have a working Next.js application, you have hundreds or thousands of packages in your node_modules. Any one of them can contain a known security vulnerability. Most developers do not check.</p>
+
+  <h2>Why Dependencies Are a Real Attack Surface</h2>
+  <p>The supply chain attack vector is not theoretical. In 2024 and 2025, several high-profile incidents involved attackers compromising popular npm packages and injecting malicious code that ran in millions of applications. The packages were legitimate and widely used. The compromise happened upstream. Users who had pinned to a specific version were safe. Users who had not were not.</p>
+  <p>Even without supply chain attacks, dependencies accumulate CVEs over time. A package that was safe when you installed it may have a known vulnerability discovered six months later. If you are not monitoring your dependencies, you will not know until someone exploits it.</p>
+
+  <h2>Running npm audit</h2>
+  <p>The most immediate step is <code>npm audit</code>. Run this in any Node.js project directory and you will see a report of known vulnerabilities in your dependency tree, organized by severity (critical, high, moderate, low) with links to the CVE details for each.</p>
+  <p><code>npm audit fix</code> will automatically update packages where a fix is available and does not introduce a breaking change. <code>npm audit fix --force</code> will apply fixes that may include breaking changes and should be tested carefully before deploying.</p>
+
+  <h2>Enabling Dependabot on GitHub</h2>
+  <p>Manually running <code>npm audit</code> is useful but requires remembering to do it. Dependabot is a GitHub feature that automatically monitors your repositories for vulnerable dependencies and opens pull requests to update them.</p>
+  <p>To enable it: go to your repository on GitHub, navigate to Settings, then Security and analysis, and enable Dependabot alerts and Dependabot security updates. That is the entire configuration for basic coverage. You will receive email alerts and automated PRs when vulnerabilities are found.</p>
+
+  <h2>Pinning Dependency Versions</h2>
+  <p>Using exact version pins in package.json rather than range specifiers reduces the risk of unexpected updates introducing vulnerabilities or breaking changes. The trade-off is that you must manually update dependencies, but you control exactly what is running in production.</p>
+  <p>Using <code>package-lock.json</code> and committing it to your repository ensures that everyone on your team and your CI system is running exactly the same dependency tree. This is a security measure as much as a consistency measure.</p>
+
+  <h2>What to Do When You Find a Critical Vulnerability</h2>
+  <p>Check whether the vulnerability affects your actual usage pattern. Many CVEs are listed as critical but only apply when the package is used in a specific way. Read the CVE description. If your usage is affected, update immediately and deploy. If your usage is not affected, document why and add a note to your audit process.</p>
+  <p>If no fix is available, assess whether the package can be replaced with an alternative. An unfixed vulnerability in a package you are actively using is a real risk that needs to be managed, not deferred indefinitely.</p>
+
+  <h2>The Baseline Standard</h2>
+  <p>At minimum, every production web application should have Dependabot or an equivalent monitoring active, with alerts routed to someone who will act on them. Running <code>npm audit</code> before every production deployment catches issues that automated monitoring might miss in the window between scans.</p>
+  <p>Security is not a state you achieve. It is a practice you maintain. Dependency management is one of the most high-leverage parts of that practice because it is largely automated once the systems are in place.</p>
+
+  <p><a href="/blog/">More security guides</a></p>
+</body>
+</html>
