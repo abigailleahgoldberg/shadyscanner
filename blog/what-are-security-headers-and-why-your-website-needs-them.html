@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Are Security Headers and Why Does Your Website Need Them -- Shady Scanner</title>
+  <meta name="description" content="Security headers are free, fast to implement, and most websites do not have them. Here is what they are, which ones matter, and how to add them today." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://shadyscanner.com/blog/what-are-security-headers-and-why-your-website-needs-them.html" />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #222; line-height: 1.7; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin-top: 2rem; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    a { color: #1a73e8; }
+    nav { margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">Shady Scanner</a> &rsaquo; <a href="/blog/">Blog</a></nav>
+  <h1>What Are Security Headers and Why Does Your Website Need Them</h1>
+  <div class="meta">March 23, 2026 &bull; 6 min read &bull; Security Basics</div>
+  
+  <p>Security headers are HTTP response headers that tell browsers how to behave when handling your website. They are free to implement, they take about an hour to configure correctly, and most websites do not have them. That is a gap worth closing.</p>
+
+  <p>Here is what the important ones do and why they matter.</p>
+
+  <h2>Content-Security-Policy (CSP)</h2>
+  <p>CSP tells the browser which sources it should trust for loading scripts, styles, images, and other resources. Without a CSP, a cross-site scripting attack can inject malicious scripts into your pages and run them in your users' browsers. With a well-configured CSP, those scripts are blocked before they run.</p>
+  <p>CSP is the most powerful and the most complex of the security headers. A strict CSP requires knowing every source your site legitimately loads content from and whitelisting them explicitly. The work is worth it, especially for sites that handle any user data or authentication.</p>
+
+  <h2>Strict-Transport-Security (HSTS)</h2>
+  <p>HSTS tells browsers to only connect to your site over HTTPS, never HTTP. Once a browser has seen this header, it will refuse to make an unencrypted connection to your domain for the duration specified in the header. This prevents attackers from downgrading connections to HTTP where they can be intercepted.</p>
+  <p>To enable HSTS with preloading, your header should include <code>max-age=31536000; includeSubDomains; preload</code> and you should submit your domain to the HSTS preload list, which causes browsers to enforce HTTPS from the first connection before they have ever received the header.</p>
+
+  <h2>X-Frame-Options</h2>
+  <p>This header prevents your site from being embedded in an iframe on another domain. Without it, an attacker can put your site inside an invisible frame on their page and trick users into clicking on things they cannot see, a technique called clickjacking. Setting this to <code>DENY</code> or <code>SAMEORIGIN</code> closes that vector.</p>
+
+  <h2>X-Content-Type-Options</h2>
+  <p>This one-liner, <code>X-Content-Type-Options: nosniff</code>, tells browsers not to guess at the MIME type of a resource and to trust what the server declares. Without it, browsers may interpret a file differently than intended, which can be exploited in certain attack scenarios.</p>
+
+  <h2>Referrer-Policy</h2>
+  <p>This header controls how much referrer information is sent when users navigate from your site to another. The default behavior in most browsers sends the full URL, including any query parameters, which can leak sensitive information. Setting this to <code>strict-origin-when-cross-origin</code> sends only the origin when navigating to a different domain.</p>
+
+  <h2>How to Check Your Headers</h2>
+  <p>You can check any site's security headers using <a href="https://securityheaders.com" target="_blank" rel="noopener">securityheaders.com</a>. Enter your domain and you will receive a grade and a breakdown of which headers are present, which are missing, and what each one does.</p>
+  <p>For most sites deployed on Vercel, headers can be added in <code>vercel.json</code> under the <code>headers</code> key. For sites on other platforms, the implementation varies but the header values are the same everywhere.</p>
+
+  <p>Security headers are not a silver bullet. They do not replace other security measures. But they are a low-effort, high-value baseline that every public website should have. Check yours today.</p>
+
+  <p><a href="/blog/">More security guides</a></p>
+</body>
+</html>
