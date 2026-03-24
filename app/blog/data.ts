@@ -30,7 +30,6 @@ HTTPS is no longer optional. Google ranks HTTPS sites higher than HTTP sites. Br
     category: 'Security',
     readTime: 6
   },
-] = [
   {
     slug: "security-scanning-why-it-matters-2026",
     title: "Security Scanning in 2026: Why It Matters More Than Ever",
