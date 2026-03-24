@@ -8,7 +8,29 @@ export interface BlogPost {
   readTime: number;
 }
 
-export const posts: BlogPost[] = [
+export const posts: BlogPost[
+  {
+    slug: 'ssl-certificates-https-explained',
+    title: 'SSL Certificates and HTTPS Explained: Why Your Website Needs It',
+    excerpt: 'Understanding SSL certificates, HTTPS, and why security matters for every website.',
+    content: `If your website does not have HTTPS, you are sending user data in plain text over the internet. Not encrypted, not protected, just visible to anyone monitoring the connection. This includes passwords, payment information, personal data — everything.
+
+SSL (Secure Sockets Layer) and its successor TLS (Transport Layer Security) are encryption protocols that encrypt data in transit. An SSL certificate is a digital credential that your server presents to browsers to prove you own the domain and to initiate encryption.
+
+When a browser connects to a website with HTTPS, the browser and server perform a handshake where they exchange keys and set up encryption. Everything transmitted after that handshake is encrypted. Someone eavesdropping on the connection sees gibberish, not your actual data.
+
+SSL certificates are issued by Certificate Authorities (CAs) that verify you own the domain before issuing the certificate. The verification can be simple (proving you control an email address for that domain) or complex (requiring legal documents proving your business owns the domain).
+
+For most websites, basic domain-validated certificates are sufficient. For sites handling sensitive data or e-commerce, extended validation certificates provide additional verification and show a special visual indicator in the browser.
+
+SSL certificates expire and must be renewed. Most modern hosting platforms can automate renewal through systems like Let's Encrypt, which provides free SSL certificates that must be renewed every 90 days but can be automated.
+
+HTTPS is no longer optional. Google ranks HTTPS sites higher than HTTP sites. Browsers show warnings on HTTP sites collecting data. Users expect security. Install SSL and enable HTTPS.`,
+    date: '2026-03-24',
+    category: 'Security',
+    readTime: 6
+  },
+] = [
   {
     slug: "security-scanning-why-it-matters-2026",
     title: "Security Scanning in 2026: Why It Matters More Than Ever",
