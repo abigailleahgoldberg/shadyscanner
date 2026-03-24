@@ -8,7 +8,7 @@ export interface BlogPost {
   readTime: number;
 }
 
-export const posts: BlogPost[
+export const posts: BlogPost[] = [
   {
     slug: 'ssl-certificates-https-explained',
     title: 'SSL Certificates and HTTPS Explained: Why Your Website Needs It',
