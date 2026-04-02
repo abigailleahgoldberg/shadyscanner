@@ -74,4 +74,157 @@ Implementing these requirements is not optional. If you collect user data, compl
     category: "Compliance",
     readTime: 6
   },
+  {
+    slug: "how-to-check-if-website-hacked-7-signs",
+    title: "How to Check If Your Website Has Been Hacked: 7 Signs Most Business Owners Miss",
+    excerpt: "Most business owners discover their website was hacked weeks or months after it happened. Here are the 7 signs you might be missing — and how to check right now.",
+    content: `The average time between when a website gets hacked and when the business owner finds out is somewhere between two weeks and three months. That's a long time. Long enough for your site to be used to send thousands of spam emails. Long enough for your customer data to have been exfiltrated. Long enough for your SEO rankings to be destroyed by malicious redirects or blackhat link insertions.
+
+Most hacks are designed not to be noticed. Hackers who want to use your site's resources for spam campaigns, crypto mining, or SEO manipulation specifically want you not to know. The dramatic "HACKED BY [GROUP NAME]" defacement is the least common outcome.
+
+Here are the seven signs most business owners miss.
+
+Sign 1: Google Is Showing Strange Search Results for Your Site
+
+Search Google for your business name or website domain. Look at the results carefully. Are there pages showing up in your site's results that you don't recognize? Descriptions that are completely different from your actual content? Results pointing to your domain but describing pharmaceutical products, gambling sites, or adult content?
+
+This is a classic symptom of Japanese keyword hack (or similar SEO-based malware), where hackers inject new pages into your site that Google indexes, use them to rank for commercial keywords in other languages, and monetize the traffic through affiliate programs. The injected pages are often invisible to you in normal browsing but fully visible to search engines.
+
+How to check: Go to Google and search site:yourdomain.com. Look at every page listed. If you see pages or descriptions that shouldn't be there, you may have been compromised.
+
+Sign 2: Your Website Is Loading Slower Than Normal
+
+An unexplained decrease in site speed can indicate that your server's resources are being used for unauthorized purposes — most commonly cryptocurrency mining or spam email campaigns. Malicious crypto mining scripts run in the background and use your server's processing power.
+
+How to check: Use Google PageSpeed Insights (free) to test your current load time and compare to what it was previously.
+
+Sign 3: You Receive Spam Complaint Notifications
+
+If your hosting provider sends you a notification that your account has been flagged for sending spam, or if your email server's IP address starts appearing on blacklists — your site has almost certainly been compromised.
+
+How to check: Use MXToolbox (free tool) to check your domain against email blacklists.
+
+Sign 4: New Admin Accounts Appeared in Your CMS
+
+If your website runs on WordPress, check your Users list. Are there admin-level accounts you didn't create? Even a single unexpected admin account is a major red flag.
+
+How to check: Log into your WordPress dashboard. Go to Users > All Users. Verify every user account. If there are accounts you don't recognize, especially with administrator privileges, remove them immediately and change your passwords.
+
+Sign 5: Browser Warnings When Visiting Your Site
+
+If Google Chrome, Firefox, or Safari show a security warning when you visit your site, Google has already flagged your site as compromised in Google Safe Browsing. This warning is shown to every visitor. The impact on trust and traffic is catastrophic.
+
+How to check: Open your site in an incognito/private browsing window. Also check Google Search Console for any manual action or security notifications.
+
+Sign 6: Your Search Rankings Have Dropped Suddenly
+
+An unexplained sudden drop in organic search traffic — not a gradual decline but a cliff — is sometimes the result of Google's spam algorithms penalizing your site for malware or manipulative SEO content injected by hackers.
+
+How to check: Compare traffic in Google Analytics week over week. Check Google Search Console for any manual action notifications.
+
+Sign 7: Your Site Is Redirecting Visitors Somewhere Else
+
+This is often not visible to you as the site owner because malicious redirects are frequently user-agent or referrer specific — they redirect visitors coming from Google search results but not visitors who type your URL directly.
+
+How to check: Use Google Search Console's URL Inspection to fetch your page as Googlebot. Also ask someone on a mobile device to click your site from a Google search result and tell you where they land.
+
+What to Do If You Suspect a Compromise: Don't panic but do act fast. Contact your hosting provider. Change all passwords immediately. Run a malware scan. Restore from a clean backup if available. Update everything. Consider professional remediation for serious cases.`,
+    date: "2026-04-01",
+    category: "Security",
+    readTime: 8
+  },
+  {
+    slug: "website-security-small-business",
+    title: "Website Security for Small Business: What You Need and What You Don't",
+    excerpt: "Website security for small business doesn't have to be complicated or expensive. Here's exactly what you need, what you don't, and how to prioritize without wasting money.",
+    content: `Small business owners get two different unhelpful messages about website security. The first message: "Security is too complicated and technical for you to handle, you need to hire a professional for everything." The second message: "Install our premium enterprise security suite for complete protection!" (Price: $400/month)
+
+Neither of these is true or helpful. Here's the practical reality: website security for most small businesses is achievable with a modest budget and reasonable effort. And the 20% of security measures that prevent 80% of attacks are not the most expensive or complicated ones.
+
+The Non-Negotiables (Do These First)
+
+SSL Certificate (HTTPS): If your website doesn't have HTTPS, fix this first. SSL certificates encrypt the connection between your visitors and your website, preventing data interception. In 2026, SSL is baseline. Browsers warn visitors when sites lack it. Google uses it as a ranking factor. Modern hosting providers include free SSL via Let's Encrypt. Cost: Free on most modern hosts. Difficulty: Usually one-click activation in your hosting control panel.
+
+Strong, Unique Passwords for Everything: The most common initial attack vector is not sophisticated zero-day exploits. It's credential stuffing — automated tools using leaked passwords from other sites to try to log into your accounts. Every account related to your website needs a unique, strong password. Use a password manager (1Password, Bitwarden, Dashlane) and generate random passwords for everything. Cost: $0-36/year for a password manager.
+
+Two-Factor Authentication on Admin Accounts: 2FA requires a second verification step beyond your password. Even if your password is compromised, 2FA prevents unauthorized access. Enable 2FA on your website's CMS admin account, your hosting control panel, and your domain registrar. Cost: Free.
+
+Regular Backups: Backups are your safety net for everything — not just hacks but server failures, accidental deletions, and botched updates. Configure automated daily backups stored somewhere separate from your server. Test your backups periodically by actually restoring from them. Cost: $0-5/month.
+
+Keep Software Updated: Outdated CMS software, plugins, and themes are the number one attack vector for small business websites. Enable automatic minor updates for WordPress core. Keep all plugins and themes updated. Delete any plugins or themes you're not actively using. Cost: Free.
+
+The Nice-to-Haves (Worth It For Most Sites)
+
+Web Application Firewall (WAF): A WAF sits between your website and incoming traffic and blocks malicious requests before they reach your site. Cloudflare's free tier includes basic WAF functionality and is worth setting up for any business website. Cost: Free (Cloudflare basic) to $20-25/month.
+
+Malware Scanning: Automated malware scanning regularly checks your site files for known malicious code patterns. Sucuri SiteCheck (free external scanner), Wordfence (WordPress plugin with free tier) all provide this functionality. Cost: Free to $99/year.
+
+Security Headers: HTTP security headers are instructions your web server sends to browsers that enable additional security protections. Tools like SecurityHeaders.com (free) will analyze your current headers and tell you what's missing. Cost: Free.
+
+What Most Small Businesses Don't Need: Enterprise DDoS protection plans, penetration testing (unless you handle sensitive data), or dedicated security monitoring services at $200-500/month.
+
+The Priority Order: 1. HTTPS / SSL (free, do it today). 2. Strong unique passwords + password manager (free, do it today). 3. 2FA on admin accounts (free, do it today). 4. Automated backups (free to minimal cost). 5. Software updates on a schedule (free, recurring). 6. Cloudflare WAF on free tier. 7. Malware scanning.
+
+Steps 1-5 are the 20% of security effort that prevents 80% of attacks. Security doesn't have to be expensive or overwhelming. Start with the fundamentals.`,
+    date: "2026-04-01",
+    category: "Security",
+    readTime: 7
+  },
+  {
+    slug: "wordpress-security-vulnerabilities-2026",
+    title: "The Most Common WordPress Security Vulnerabilities in 2026 (And How to Fix Them)",
+    excerpt: "WordPress powers over 40% of the web — and it's a constant target. Here are the most common vulnerabilities in 2026 and exactly how to fix each one.",
+    content: `WordPress runs over 40% of all websites on the internet. That dominance makes it the most targeted platform in web history — not because WordPress itself is fundamentally insecure, but because its massive install base means that a single discovered vulnerability affects millions of sites simultaneously.
+
+The good news: the most common WordPress security vulnerabilities in 2026 are not sophisticated zero-day exploits. They're predictable, preventable issues that most site owners can address without specialized technical knowledge.
+
+1. Outdated WordPress Core, Plugins, and Themes
+
+The vulnerability: WordPress publicly announces security updates, including what vulnerabilities were patched. Hackers then scan the entire internet for sites still running the old, vulnerable version — typically within hours of the announcement. An unpatched WordPress installation is a known vulnerability waiting to be exploited.
+
+The fix: Enable automatic updates for WordPress minor versions. Check for plugin and theme updates weekly, or enable automatic plugin updates. Remove plugins and themes you don't actively use. Difficulty: Low. Time investment: 15-30 minutes per week.
+
+2. Weak Admin Credentials
+
+The vulnerability: WordPress admin accounts with weak or reused passwords are the second most common entry point. Automated credential stuffing tools try username/password combinations from leaked databases against WordPress login pages at massive scale. The default WordPress admin username is often "admin" — which is the first username attackers try.
+
+The fix: Change the admin username from "admin" to something unique. Use a strong, randomly generated password. Enable two-factor authentication on all admin accounts. Implement login attempt limits to prevent brute force attacks. Difficulty: Low. Time investment: 30 minutes to configure once.
+
+3. Unprotected wp-login.php and xmlrpc.php
+
+The vulnerability: WordPress's login page and the XML-RPC endpoint are targeted by automated brute force attacks constantly. XMLRPC was originally used for remote publishing — most sites don't need it anymore, and it's a common attack vector.
+
+The fix: Limit login attempts using a plugin like Wordfence. Consider blocking wp-login.php by IP if your admin team has predictable IP addresses. Disable XMLRPC entirely if you don't use it. Difficulty: Low to moderate. Time investment: 30-60 minutes.
+
+4. File Permission Issues
+
+The vulnerability: When permissions are too permissive — particularly allowing public write access to key directories — attackers can upload malicious files or modify existing ones.
+
+The fix: WordPress directories should be set to 755 and files to 644. The wp-config.php file should be set to 600 or 640. The wp-content/uploads directory should be configured to prevent the execution of PHP files within it. Difficulty: Moderate.
+
+5. Insecure Plugins with Known Vulnerabilities
+
+The vulnerability: Plugins that have been abandoned by their developers are particularly risky because discovered vulnerabilities are never patched. The WPScan vulnerability database tracks known vulnerabilities in WordPress plugins and themes.
+
+The fix: Check the WPScan vulnerability database for any plugins on your site. Remove plugins with known unpatched vulnerabilities immediately. Look at the "Last Updated" date for any plugin before installing it. Difficulty: Low. Time investment: 30 minutes to audit.
+
+6. Database Prefix Vulnerabilities
+
+The vulnerability: WordPress installs using the default wp_ database table prefix. SQL injection attacks are made easier when the database prefix is predictable.
+
+The fix: Change the database prefix from wp_ to something custom. This can be done during installation or after using a plugin like iThemes Security. Difficulty: Low to moderate.
+
+7. Missing Security Headers
+
+The vulnerability: HTTP security headers enable protections against common attacks like XSS and clickjacking. Missing headers leave these protections disabled.
+
+The fix: Test your current headers at SecurityHeaders.com. Use plugins like Headers Security Advanced & HSTS WP to add recommended headers. Difficulty: Low with a plugin. Time investment: 30 minutes.
+
+The WordPress Security Audit Checklist (run quarterly): WordPress core fully updated, all plugins updated and unused ones deleted, all themes updated and unused ones deleted, admin username is not "admin", all admin passwords are strong and unique, 2FA enabled on all admin accounts, login attempts are limited, XMLRPC disabled if not needed, backups running and tested, malware scan run and clean, file permissions correct, no plugins with known unpatched vulnerabilities.
+
+This checklist takes about an hour per quarter. It catches the vast majority of common WordPress vulnerabilities before they're exploited.`,
+    date: "2026-04-01",
+    category: "Security",
+    readTime: 9
+  },
 ];
